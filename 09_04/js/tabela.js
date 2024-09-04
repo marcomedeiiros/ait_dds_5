@@ -2,6 +2,9 @@
 
 import abreviaHora from "./abreviaHora.js";
 import abreviaTurma from "./abreviaTurma.js";
+import abreviaInstrutor from "./abreviaInstrutor.js";
+import abreviaUnidadeCurricular from "./abreviaUnidadeCurricular.js";
+import abreviaAmbiente from "./abreviaAmbiente.js";
 
 let aulas = [
     {
@@ -40,22 +43,28 @@ let aulas = [
 ]
 
 const tabela_aulas = document.getElementById('tabela_aulas');
-//console.log(tabela_aulas);
 
-let linhas = '';
+function atualizarTabelaAulas() {
+    if (!tabela_aulas) {
+        console.error('Elemento com id "tabela_aulas" não encontrado.');
+        return;
+    }
 
-for(let aula of aulas){
-    linhas += '<tr>'; 
-    linhas += '<td>'+abreviaHora(aula.data_hora_inicio)+'</td>'; 
-    linhas += '<td>'+abreviaHora(aula.data_hora_fim)+'</td>'; 
-    linhas += '</tr>';
-    //console.log(abreviaHora(aula.data_hora_inicio));
+    let linhas = '';
+
+    for (let aula of aulas) {
+        linhas += '<tr>'; 
+        linhas += '<td>'+abreviaHora(aula.data_hora_inicio)+'</td>'; 
+        linhas += '<td>'+abreviaHora(aula.data_hora_fim)+'</td>'; 
+        linhas += '<td>'+abreviaTurma(aula.turma)+'</td>';
+        linhas += '<td>'+abreviaInstrutor(aula.instrutor)+'</td>';
+        linhas += '<td>'+abreviaUnidadeCurricular(aula.unidade_curricular)+'</td>';
+        linhas += '<td>'+abreviaAmbiente(aula.ambiente)+'</td>';
+        linhas += '</tr>';
+    }
+
+    tabela_aulas.querySelector('tbody').innerHTML = linhas; 
 }
 
-for(let aula of aulas){
-    linhas += '<tr>';
-    linhas += '<td>'+abreviaTurma(aula.turma)+'</td>';
-    linhas += '</tr>';
-}
 
-tabela_aulas.innerHTML += linhas;
+document.addEventListener('DOMContentLoaded', atualizarTabelaAulas);

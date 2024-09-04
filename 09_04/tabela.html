@@ -5,17 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabela</title>
+    <style>
+        #relogio {
+            font-family: 'Arial', sans-serif;
+            font-size: 2em;
+            color: #333;
+            text-align: center;
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.90);
+        }
+    </style>
 </head>
 
 <body>
+    <div id="relogio"></div>
     <table id="tabela_aulas">
         <thead>
-                <th>Inicio</th>
-                <th>Fim</th>
-                <th>Turma</th>  
+            <tr>
+                <th>Data Hora Início</th>
+                <th>Data Hora Fim</th>
+                <th>Turma</th>
+                <th>Instrutor</th>
+                <th>Unidade Curricular</th>
+                <th>Ambiente</th>
+            </tr>
         </thead>
+        <tbody>
+        </tbody>
     </table>
     <script type="module" src="./js/tabela.js"></script>
+    <script type="module" src="./js/relogio.js"></script>
 </body>
 
 </html>
